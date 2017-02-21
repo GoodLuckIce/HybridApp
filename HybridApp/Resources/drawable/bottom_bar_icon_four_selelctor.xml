@@ -1,0 +1,12 @@
+﻿<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item android:drawable="@drawable/gerenzhongxinon" android:state_pressed="true"/>
+  <!-- pressed -->
+  <item android:drawable="@drawable/gerenzhongxinon" android:state_focused="true"/>
+  <!-- focused bottom_item_selected-->
+  <item  android:drawable="@drawable/gerenzhongxinon"  android:state_selected="true"/>
+  <!-- selected -->
+  <item android:drawable="@drawable/gerenzhongxin"/>
+  <!-- normal -->
+
+</selector>

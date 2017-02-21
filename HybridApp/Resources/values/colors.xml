@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--页面背景颜色 -->
+  <color name="PageBackground">#eeeeee</color>
+  <!--标题背景颜色 -->
+  <color name="TitleBackground">#ffffb957</color>
+  <color name="title_text_color">#000000</color>
+  <color name="time_line_color">#589bfa</color>
+  <color name="bottom_item_line_color">#111111</color>
+  <color name="title_color">#ffffff</color>
+  <color name="title_button_color_gray">#e5e9ec</color>
+  <color name="font_main_color">#555555</color>
+  <color name="font_value_main_color">#8c8c8c</color>
+  <color name="edt_font_value__color">#d0d0d0</color>
+  <color name="background">#c8c8cb</color>
+  <color name="navigation_color">#589bfa</color>
+  <color name="yellow">#fd6715</color> 
+
+  <!-- 上传图片添加的颜色 -->
+ <color name="none_color">#00000000</color>
+ <color name="plugin_camera_black">#000000</color>
+ <color name="albumback">#E1E0DE</color>
+ <color name="c1"> #FEFEFE</color>
+ <color name="c4"> #D37882</color>
+ <color name="c10"> #4d4d4d</color>
+ <color name="style_red">#ff4c41</color>
+ <color name="style_divider_color">#C9C7CD</color>
+ <color name="black">#000000</color><!--黑色 -->  
+ <color name="blue">#0000ff</color><!--蓝色 --> 
+ <color name="red">#ff0000</color><!--红色 --> 
+ <color name="white">#ffffff</color>
+</resources>

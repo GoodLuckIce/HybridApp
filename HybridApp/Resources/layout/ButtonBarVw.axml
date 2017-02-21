@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/background_bar"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btn_item_one"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="10dp"
+            android:text="首页"
+            android:background="@color/PageBackground"
+            android:drawableTop="@drawable/bottom_bar_icon_one_selelctor"
+            android:textColor="@drawable/bottom_bar_font_selelctor"
+            android:textSize="12sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btn_item_two"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="10dp"
+            android:background="@color/PageBackground"
+            android:text="订单"
+            android:drawableTop="@drawable/bottom_bar_icon_tow_selelctor"
+            android:textColor="@drawable/bottom_bar_font_selelctor"
+            android:textSize="12sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btn_item_three"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/PageBackground"
+            android:paddingTop="10dp"
+            android:drawableTop="@drawable/bottom_bar_icon_three_selelctor"
+            android:textColor="@drawable/bottom_bar_font_selelctor"
+            android:text="我的"
+            android:textSize="12sp" />
+    </RelativeLayout>
+<!--<View
+        android:layout_width="0.5dip"
+        android:layout_height="fill_parent"
+        android:background="@color/bottom_item_line_color" />-->
+    <!--<RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btn_item_four"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/PageBackground"
+            android:paddingTop="10dp"
+            android:drawableTop="@drawable/bottom_bar_icon_four_selelctor"
+            android:textColor="@drawable/bottom_bar_font_selelctor"
+            android:text="兴趣社区"
+            android:textSize="12sp" />
+    </RelativeLayout>-->
+    <!--<RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btn_item_five"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/PageBackground"
+            android:paddingTop="10dp"
+            android:drawableTop="@drawable/bottom_bar_icon_five_selelctor"
+            android:textColor="@drawable/bottom_bar_font_selelctor"
+            android:text="个人中心"
+            android:textSize="12sp" />
+    </RelativeLayout>-->
+</LinearLayout>

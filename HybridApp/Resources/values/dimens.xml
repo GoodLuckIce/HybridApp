@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <dimen name="view_title">20sp</dimen>
+  <dimen name="view_Return">20sp</dimen>
+  <dimen name="navigation_title">12sp</dimen >
+  <dimen name="ordinary_button">20sp</dimen >
+  <dimen name="input">18sp</dimen >
+  <dimen name=" errormessage">14sp</dimen >
+  <dimen name="lefttext">16sp</dimen >
+
+
+  <!--超大     android:textSize="@dimen/displaySupertext"-->
+  <dimen name="displaySupertext">20sp</dimen >
+
+  <!--超小    android:textSize="@dimen/displaySuperSmalltext" -->
+  <dimen name="displaySuperSmalltext">12sp</dimen >
+
+  <!--小       android:textSize="@dimen/displaySmalltext"-->
+  <dimen name="displaySmalltext">14sp</dimen >
+
+  <!--中      android:textSize="@dimen/displayMiddletext"-->
+  <dimen name="displayMiddletext">16sp</dimen >
+
+  <!--大      android:textSize="@dimen/displayBigtext"-->
+  <dimen name="displayBigtext">18sp</dimen >
+
+  <!--特殊   android:textSize="@dimen/displaySpecialtext"-->
+  <dimen name="displaySpecialtext">24sp</dimen >
+
+   <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+	<dimen name="ui_10_dip">10dip</dimen> 
+</resources>

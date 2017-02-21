@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="txtDetailsStyle">
+    <item name="android:layout_marginLeft">5dp</item>
+    <item name="android:layout_marginRight">5dp</item>
+    <item name="android:textColor">@color/font_main_color</item>
+    <item name="android:textSize">13sp</item>
+    <item name="android:gravity">center_vertical</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="EdtDetailsNumberStyle">
+    <item name="android:textColor">@color/font_main_color</item>
+    <item name="android:layout_marginRight">5dp</item>
+    <item name="android:gravity">center_vertical</item>
+    <item name="android:inputType">numberDecimal</item>
+    <item name="android:maxLength">18</item>
+    <item name="android:background">@drawable/edtbackground</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">38dp</item>
+  </style>
+
+  <style name="EdtDetailsStyle">
+    <item name="android:textColor">@color/font_main_color</item>
+    <item name="android:layout_marginRight">5dp</item>
+    <item name="android:gravity">center_vertical</item>
+    <item name="android:maxLength">18</item>
+    <item name="android:background">@drawable/edtbackground</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">38dp</item>
+  </style>
+
+  <style name="LinearStyle">
+    <item name="android:background">#ffffff</item>
+    <item name="android:layout_marginTop">1sp</item>
+    <item name="android:gravity">center</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">40dp</item>
+  </style>
+
+
+  <style name="Leparationline">
+    <item name="android:layout_width">1px</item>
+    <item name="android:layout_height">20dp</item>
+    <item name="android:background">#000000</item>
+    <item name="android:layout_marginLeft">10dp</item>
+    <item name="android:gravity">center_vertical</item>
+  </style>
+
+  <style name="btn_input_amount_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="layout_input_amount_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AppTheme" parent="android:Theme.Light" />
+
+    <style name="chat_text_date_style">
+        <item name="android:padding">2dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">#bfbfbf</item>
+    </style>
+
+    <style name="chat_content_date_style">
+        <item name="android:minHeight">50dp</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">#bfbfbf</item>
+    </style>
+
+    <style name="chat_text_name_style">
+        <item name="android:textColor">#818181</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>
