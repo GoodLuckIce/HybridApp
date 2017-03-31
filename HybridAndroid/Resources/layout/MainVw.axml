@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:id="@+id/MainContent"
+    android:layout_height="fill_parent">
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragmentcontent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/details"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/PageBackground"
+            android:layout_above="@+id/ll_bottom_bar" />
+    </FrameLayout>
+  <HybridAndroid.BottonBar
+      android:id="@+id/ll_bottom_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
