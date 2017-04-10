@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using Android.App;
 using Android.Content;
@@ -13,7 +14,6 @@ using HybridCommon;
 using HybridCommon.Agreement;
 using HybridCommon.Context;
 using Plugin.DeviceInfo;
-using Object = Java.Lang.Object;
 
 namespace HybridAndroid
 {
@@ -26,17 +26,17 @@ namespace HybridAndroid
             RequestWindowFeature(WindowFeatures.NoTitle);
             SetContentView(Resource.Layout.LoadMainVw);
 
-
             QbSdk.InitX5Environment(this.ApplicationContext, this);
             QbSdk.SetTbsListener(this);
 
             var intent = new Intent(this, typeof(MainActivity));
             StartActivity(intent);
-            X5WebViewHelper.PageParam = new Dictionary<string, PageParam>();
+            AnalyticAgreement.PageParam = new Dictionary<string, PageParam>();
             X5WebViewHelper.PageActivity = new Dictionary<string, Activity>();
+            
 
             //异步初始化操作
-            var th = new Thread((() => { HybridCommonMain.Init(new AgreementProvider(), 0); }));
+            var th = new Thread((() => { HybridCommonMain.Init(new AgreementProvider()); }));
             th.Start();
         }
 

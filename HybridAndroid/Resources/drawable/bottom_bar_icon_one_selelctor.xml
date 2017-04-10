@@ -1,13 +1,13 @@
 ﻿<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <item android:drawable="@drawable/xiaoxion" android:state_pressed="true"/>
+  <item android:drawable="@drawable/tabbar_icon_home_selected" android:state_pressed="true"/>
   <!-- pressed -->
-  <item android:drawable="@drawable/xiaoxion" android:state_focused="true"/>
+  <item android:drawable="@drawable/tabbar_icon_home_selected" android:state_focused="true"/>
   <!-- focused bottom_item_selected-->
-  <item  android:drawable="@drawable/xiaoxion"  android:state_selected="true"/>
+  <item  android:drawable="@drawable/tabbar_icon_home_selected"  android:state_selected="true"/>
 
   <!-- selected -->
-  <item android:drawable="@drawable/xiaoxi"/>
+  <item android:drawable="@drawable/tabbar_icon_home_default"/>
   <!-- normal -->
 
 </selector>

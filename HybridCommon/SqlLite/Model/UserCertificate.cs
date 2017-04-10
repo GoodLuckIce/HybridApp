@@ -22,6 +22,11 @@ namespace HybridCommon.SqlLite.Model
         public string UserName { get; set; }
 
         /// <summary>
+        /// 用户头像
+        /// </summary>
+        public string Avatar { get; set; }
+        
+        /// <summary>
         /// 登录时间
         /// </summary>
         public DateTime LoginTime { get; set; }

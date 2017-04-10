@@ -34,6 +34,12 @@ namespace HybridCommon.Agreement
         /// <param name="pageId"></param>
         void PageFinished( string pageId);
 
+        /// <summary>
+        /// SetPageId完成
+        /// </summary>
+        /// <param name="parentPageId"></param>
+        /// <param name="pageId"></param>
+        void SetPageIdComplete(string parentPageId, string pageId);
         #endregion
 
         #region App触发的方法

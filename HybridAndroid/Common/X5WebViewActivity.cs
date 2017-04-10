@@ -1,7 +1,10 @@
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -24,15 +27,13 @@ namespace HybridAndroid.Common
         public string PageUrl { get; set; }
         public string ParentWebViewKey { get; set; }
         public string WebViewKey { get; set; }
-        
+
 
 
         public static void ShowActivity(PageParam param)
         {
             MainActivity.thisActivity.RunOnUiThread((() =>
             {
-                var pageActivity = X5WebViewHelper.PageActivity;
-                //var parentActivity = pageActivity[param.ParentPageId];
                 var intent = new Intent(MainActivity.thisActivity, typeof(X5WebViewActivity));
                 intent.PutExtra("OpenPageParam", JsonConvert.SerializeObject(param));
                 MainActivity.thisActivity.StartActivity(intent);
@@ -58,7 +59,7 @@ namespace HybridAndroid.Common
             var paramString = this.Intent.GetStringExtra("OpenPageParam");
             var pageParam = JsonConvert.DeserializeObject<PageParam>(paramString);
 
-            var parentPageAttributes = X5WebViewHelper.PageParam[pageParam.ParentPageId];
+            var parentPageAttributes = AnalyticAgreement.PageParam[pageParam.ParentPageId];
             if (parentPageAttributes != null)
             {
                 pageParam.ParentPageUrl = parentPageAttributes.PageUrl;
@@ -68,13 +69,13 @@ namespace HybridAndroid.Common
             ParentPageId = pageParam.ParentPageId;
             PageUrl = pageParam.PageUrl;
             ParentPageUrl = pageParam.ParentPageUrl;
-            if (X5WebViewHelper.PageParam.ContainsKey(PageId))
+            if (AnalyticAgreement.PageParam.ContainsKey(PageId))
             {
-                X5WebViewHelper.PageParam[PageId] = pageParam;
+                AnalyticAgreement.PageParam[PageId] = pageParam;
             }
             else
             {
-                X5WebViewHelper.PageParam.Add(PageId, pageParam);
+                AnalyticAgreement.PageParam.Add(PageId, pageParam);
             }
             if (X5WebViewHelper.PageActivity.ContainsKey(PageId))
             {
@@ -93,49 +94,60 @@ namespace HybridAndroid.Common
             //var router = "{ path: '"+ pageParam.PageUrl + "', params: { PageId: '"+ PageId + "' }}";
             if (string.IsNullOrWhiteSpace(pageParam.OpenParam))
             {
-                pageParam.OpenParam = "^";
+                pageParam.OpenParam = "";
             }
             pageParam.OpenParam = pageParam.OpenParam.Replace("'", "```").Replace("\"", "~~~");
             var router = pageParam.PageUrl + "/" + pageParam.OpenParam;
             AnalyticAgreement.AgreementProvider.ExecuteJavaScript(PageId, $@"window.AppBridge.Router.push(""{router}"")");
             AnalyticAgreement.AgreementProvider.ExecuteJavaScript(PageId, $@"window.AppBridge.SetPageId(""{pageParam.ParentPageId}"",""{pageParam.PageId}"")");
 
-            var barTableTextView = FindViewById<TextView>(Resource.Id.BarTitle);
-            barTableTextView.Text = pageParam.PageName;
-
-            var btnReturn = FindViewById<LinearLayout>(Resource.Id.btnReturn);
-            btnReturn.Visibility = ViewStates.Visible;
-            btnReturn.Click += (sender, args) =>
+            if (pageParam.IsHideNavBar)
             {
-                PageBack();
-            };
 
-            if (!pageParam.AllowBack)
-            {
-                //Òþ²Ø·µ»Ø°´Å¥
-                btnReturn.Visibility = ViewStates.Gone;
-            }
-
-            var btnRight = FindViewById<LinearLayout>(Resource.Id.btnRight);
-            if (pageParam.AllowRightBtn
-                && pageParam.RightBtnParam != null
-                && !string.IsNullOrWhiteSpace(pageParam.RightBtnParam.BtnTitle)
-                && pageParam.RightBtnParam.CallBackAction != null)
-            {
-                var txtRight = FindViewById<TextView>(Resource.Id.txtRight);
-                txtRight.Text = pageParam.RightBtnParam.BtnTitle;
-
-                btnRight.Click += (sender, args) =>
-                {
-                    pageParam.RightBtnParam.CallBackAction(sender, args);
-
-                    AnalyticAgreement.AgreementProvider.OnRightBtn(PageId);
-                };
+                var rlTitle = this.Window.DecorView.FindViewById<RelativeLayout>(Resource.Id.rlTitle);
+                rlTitle.Visibility = ViewStates.Gone;
             }
             else
             {
-                btnRight.Visibility = ViewStates.Gone;
+
+                var barTableTextView = FindViewById<TextView>(Resource.Id.BarTitle);
+                barTableTextView.Text = pageParam.PageName;
+
+                var btnReturn = FindViewById<LinearLayout>(Resource.Id.btnReturn);
+                btnReturn.Visibility = ViewStates.Visible;
+                btnReturn.Click += (sender, args) =>
+                {
+                    PageBack();
+                };
+
+                if (!pageParam.AllowBack)
+                {
+                    //ï¿½ï¿½ï¿½Ø·ï¿½ï¿½Ø°ï¿½Å¥
+                    btnReturn.Visibility = ViewStates.Gone;
+                }
+
+                var btnRight = FindViewById<LinearLayout>(Resource.Id.btnRight);
+                if (pageParam.AllowRightBtn
+                    && pageParam.RightBtnParam != null
+                    && !string.IsNullOrWhiteSpace(pageParam.RightBtnParam.BtnTitle)
+                    && pageParam.RightBtnParam.CallBackAction != null)
+                {
+                    var txtRight = FindViewById<TextView>(Resource.Id.txtRight);
+                    txtRight.Text = pageParam.RightBtnParam.BtnTitle;
+
+                    btnRight.Click += (sender, args) =>
+                    {
+                        pageParam.RightBtnParam.CallBackAction(sender, args);
+
+                        AnalyticAgreement.AgreementProvider.OnRightBtn(PageId);
+                    };
+                }
+                else
+                {
+                    btnRight.Visibility = ViewStates.Gone;
+                }
             }
+
         }
 
         public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
@@ -153,7 +165,7 @@ namespace HybridAndroid.Common
 
         private void PageBack()
         {
-            AnalyticAgreement.AgreementProvider.OnBackBtn(PageId, X5WebViewHelper.PageParam[PageId].IsRelative);
+            AnalyticAgreement.AgreementProvider.OnBackBtn(PageId, AnalyticAgreement.PageParam[PageId].IsRelative);
         }
 
         protected override void OnResume()

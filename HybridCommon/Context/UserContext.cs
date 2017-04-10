@@ -36,7 +36,7 @@ namespace HybridCommon.Context
         /// 用户名
         /// </summary>
         /// <value>The username.</value>
-        public static string Username { get; set; }
+        public static string UserName { get; set; }
 
         /// <summary>
         /// 登陆密码

@@ -15,9 +15,8 @@ namespace HybridCommon.Context
         public static string RootFolder { get; set; }
 
         /// <summary>
-        /// 终端类型
+        /// Html文件目录
         /// </summary>
-        public static int TerminalType { get; set; }
-
+        public static string HtmlFolder { get { return RootFolder + "/Html"; } }
     }
 }

@@ -12,10 +12,10 @@ namespace HybridAndroid.Chat
             var prarm = new PageParam
             {
                 IsRelative = false,
-                PageName = "消息",
-                PageUrl = "/chat/ChatDetail",
+                PageName = "测试",
+                PageUrl = "/Test",
                 AllowBack = true,
-                PageId = "消息",
+                PageId = "测试",
                 ParentPageId = parentPageId
             };
             X5WebViewActivity.ShowActivity(prarm);

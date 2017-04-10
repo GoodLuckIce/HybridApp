@@ -77,7 +77,7 @@ namespace HybridAndroid
             {
                 if (DateTime.Now - _lastBackKeyDownTime > new TimeSpan(0, 0, 2))
                 {
-                    Toast.MakeText(this.ApplicationContext, "再按一次退出程序", ToastLength.Short).Show();
+                    Toast.MakeText(this.ApplicationContext, "Press again to exit", ToastLength.Short).Show();
                     _lastBackKeyDownTime = DateTime.Now;
                 }
                 else

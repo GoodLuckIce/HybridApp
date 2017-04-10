@@ -623,67 +623,79 @@ namespace HybridAndroid
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int background_bar = 2130837504;
+			public const int bottom_bar_font_selelctor = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int bottom_bar_font_selelctor = 2130837505;
+			public const int bottom_bar_icon_five_selelctor = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int bottom_bar_icon_five_selelctor = 2130837506;
+			public const int bottom_bar_icon_four_selelctor = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int bottom_bar_icon_four_selelctor = 2130837507;
+			public const int bottom_bar_icon_one_selelctor = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int bottom_bar_icon_one_selelctor = 2130837508;
+			public const int bottom_bar_icon_three_selelctor = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int bottom_bar_icon_three_selelctor = 2130837509;
+			public const int bottom_bar_icon_tow_selelctor = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int bottom_bar_icon_tow_selelctor = 2130837510;
+			public const int dingdan = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int dingdan = 2130837511;
+			public const int dingdanon = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int dingdanon = 2130837512;
+			public const int faxian = 2130837512;
 			
 			// aapt resource value: 0x7f020009
-			public const int edtbackground = 2130837513;
+			public const int faxianon = 2130837513;
 			
 			// aapt resource value: 0x7f02000a
-			public const int faxian = 2130837514;
+			public const int gerenzhongxin = 2130837514;
 			
 			// aapt resource value: 0x7f02000b
-			public const int faxianon = 2130837515;
+			public const int gerenzhongxinon = 2130837515;
 			
 			// aapt resource value: 0x7f02000c
-			public const int gerenzhongxin = 2130837516;
+			public const int ic_splash_logo = 2130837516;
 			
 			// aapt resource value: 0x7f02000d
-			public const int gerenzhongxinon = 2130837517;
+			public const int Icon = 2130837517;
 			
 			// aapt resource value: 0x7f02000e
-			public const int ic_splash_logo = 2130837518;
+			public const int plugin_lc_smallicon = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int Icon = 2130837519;
+			public const int rh = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int plugin_lc_smallicon = 2130837520;
+			public const int tabbar_icon_home_default = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int rh = 2130837521;
+			public const int tabbar_icon_home_selected = 2130837521;
 			
 			// aapt resource value: 0x7f020012
-			public const int xiaoxi = 2130837522;
+			public const int tabbar_icon_lcl_default = 2130837522;
 			
 			// aapt resource value: 0x7f020013
-			public const int xiaoxiguanli = 2130837523;
+			public const int tabbar_icon_lcl_selected = 2130837523;
 			
 			// aapt resource value: 0x7f020014
-			public const int xiaoxion = 2130837524;
+			public const int tabbar_icon_my_default = 2130837524;
+			
+			// aapt resource value: 0x7f020015
+			public const int tabbar_icon_my_selected = 2130837525;
+			
+			// aapt resource value: 0x7f020016
+			public const int xiaoxi = 2130837526;
+			
+			// aapt resource value: 0x7f020017
+			public const int xiaoxiguanli = 2130837527;
+			
+			// aapt resource value: 0x7f020018
+			public const int xiaoxion = 2130837528;
 			
 			static Drawable()
 			{
@@ -701,17 +713,17 @@ namespace HybridAndroid
 			// aapt resource value: 0x7f080004
 			public const int BarTitle = 2131230724;
 			
-			// aapt resource value: 0x7f08000d
-			public const int LoadMainContent = 2131230733;
-			
 			// aapt resource value: 0x7f08000e
-			public const int MainContent = 2131230734;
+			public const int LoadMainContent = 2131230734;
+			
+			// aapt resource value: 0x7f08000f
+			public const int MainContent = 2131230735;
 			
 			// aapt resource value: 0x7f080005
 			public const int btnReturn = 2131230725;
 			
-			// aapt resource value: 0x7f080009
-			public const int btnRight = 2131230729;
+			// aapt resource value: 0x7f08000a
+			public const int btnRight = 2131230730;
 			
 			// aapt resource value: 0x7f080000
 			public const int btn_item_one = 2131230720;
@@ -722,20 +734,20 @@ namespace HybridAndroid
 			// aapt resource value: 0x7f080001
 			public const int btn_item_two = 2131230721;
 			
-			// aapt resource value: 0x7f080010
-			public const int details = 2131230736;
+			// aapt resource value: 0x7f080011
+			public const int details = 2131230737;
 			
-			// aapt resource value: 0x7f08000f
-			public const int fragmentcontent = 2131230735;
+			// aapt resource value: 0x7f080010
+			public const int fragmentcontent = 2131230736;
 			
 			// aapt resource value: 0x7f080006
 			public const int imgReturn = 2131230726;
 			
-			// aapt resource value: 0x7f08000a
-			public const int imgRight = 2131230730;
+			// aapt resource value: 0x7f08000b
+			public const int imgRight = 2131230731;
 			
-			// aapt resource value: 0x7f080011
-			public const int ll_bottom_bar = 2131230737;
+			// aapt resource value: 0x7f080012
+			public const int ll_bottom_bar = 2131230738;
 			
 			// aapt resource value: 0x7f080003
 			public const int rlTitle = 2131230723;
@@ -743,14 +755,17 @@ namespace HybridAndroid
 			// aapt resource value: 0x7f080007
 			public const int txtReturn = 2131230727;
 			
-			// aapt resource value: 0x7f08000b
-			public const int txtRight = 2131230731;
+			// aapt resource value: 0x7f08000c
+			public const int txtRight = 2131230732;
 			
 			// aapt resource value: 0x7f080008
 			public const int webView = 2131230728;
 			
-			// aapt resource value: 0x7f08000c
-			public const int webViewContainer = 2131230732;
+			// aapt resource value: 0x7f08000d
+			public const int webViewContainer = 2131230733;
+			
+			// aapt resource value: 0x7f080009
+			public const int x5Activity = 2131230729;
 			
 			static Id()
 			{
@@ -866,17 +881,11 @@ namespace HybridAndroid
 			// aapt resource value: 0x7f070003
 			public const int AppTheme = 2131165187;
 			
-			// aapt resource value: 0x7f070008
-			public const int EdtDetailsNumberStyle = 2131165192;
-			
 			// aapt resource value: 0x7f070009
-			public const int EdtDetailsStyle = 2131165193;
+			public const int Leparationline = 2131165193;
 			
-			// aapt resource value: 0x7f07000b
-			public const int Leparationline = 2131165195;
-			
-			// aapt resource value: 0x7f07000a
-			public const int LinearStyle = 2131165194;
+			// aapt resource value: 0x7f070008
+			public const int LinearStyle = 2131165192;
 			
 			// aapt resource value: 0x7f070000
 			public const int btn_input_amount_style = 2131165184;

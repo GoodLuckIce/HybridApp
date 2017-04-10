@@ -1,4 +1,4 @@
-using Android.App;
+Ôªøusing Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -36,9 +36,9 @@ namespace HybridAndroid.Main
         {
             RootLayout = inflater.Inflate(Resource.Layout.HomeMainVw, container, false);
             var barTableTextView = RootLayout.FindViewById<TextView>(Resource.Id.BarTitle);
-            barTableTextView.Text = "∂©µ•";
-            PageUrl = "/TestEmpty";
-            PageId = "Œ“µƒ∂©µ•";
+            barTableTextView.Text = "LCL";
+            PageUrl = "/LCL/lcllist";
+            PageId = "ÊàëÁöÑËÆ¢Âçï";
             ParentWebViewKey = "";
             ParentPageId = "";
             ParentPageUrl = "";
@@ -50,13 +50,13 @@ namespace HybridAndroid.Main
                 ParentPageUrl = ""
             };
 
-            if (X5WebViewHelper.PageParam.ContainsKey(pageParam.PageId))
+            if (AnalyticAgreement.PageParam.ContainsKey(pageParam.PageId))
             {
-                X5WebViewHelper.PageParam[pageParam.PageId] = pageParam;
+                AnalyticAgreement.PageParam[pageParam.PageId] = pageParam;
             }
             else
             {
-                X5WebViewHelper.PageParam.Add(pageParam.PageId, pageParam);
+                AnalyticAgreement.PageParam.Add(pageParam.PageId, pageParam);
             }
             if (X5WebViewHelper.PageActivity.ContainsKey(pageParam.PageId))
             {
@@ -66,7 +66,7 @@ namespace HybridAndroid.Main
             {
                 X5WebViewHelper.PageActivity.Add(PageId, this.Activity);
             }
-            //webView…Ë÷√
+            //webViewËÆæÁΩÆ
             pageParam.WebViewKey = X5WebViewHelper.WebViewInit(PageId);
             WebViewKey = pageParam.WebViewKey;
 
@@ -74,41 +74,39 @@ namespace HybridAndroid.Main
             //var router = "{ path: '" + pageParam.PageUrl + "', params: { PageId: '" + PageId + "' }}";
             if (string.IsNullOrWhiteSpace(pageParam.OpenParam))
             {
-                pageParam.OpenParam = "^";
+                pageParam.OpenParam = "";
             }
             pageParam.OpenParam = pageParam.OpenParam.Replace("'", "```").Replace("\"", "~~~");
             var router = pageParam.PageUrl + "/" + pageParam.OpenParam;
             AnalyticAgreement.AgreementProvider.ExecuteJavaScript(pageParam.PageId, $@"window.AppBridge.Router.push(""{router}"")");
             AnalyticAgreement.AgreementProvider.ExecuteJavaScript(pageParam.PageId, $@"window.AppBridge.SetPageId(""{pageParam.ParentPageId}"",""{pageParam.PageId}"")");
 
-            //“˛≤ÿ∑µªÿ∞¥≈•
+            //ÈöêËóèÂØºËà™Êù°
+            var rlTitle = RootLayout.FindViewById<RelativeLayout>(Resource.Id.rlTitle);
+            rlTitle.Visibility = ViewStates.Gone;
+            //ÈöêËóèËøîÂõûÊåâÈíÆ
             var btnReturn = RootLayout.FindViewById<LinearLayout>(Resource.Id.btnReturn);
             btnReturn.Visibility = ViewStates.Gone;
-            //“˛≤ÿ”“≤‡∞¥≈•
-            var btnRight = RootLayout.FindViewById<LinearLayout>(Resource.Id.btnRight);
-            btnRight.Visibility = ViewStates.Gone;
+            //ÈöêËóèÂè≥‰æßÊåâÈíÆ
+            var txtRight = RootLayout.FindViewById<TextView>(Resource.Id.txtRight);
+            txtRight.Visibility = ViewStates.Gone;
 
             return RootLayout;
         }
 
+
         public override void OnResume()
         {
             base.OnResume();
-            if (X5WebViewHelper.WebViewAssets.ContainsKey(X5WebViewHelper.PageParam[PageId].WebViewKey))
-            {
-                var webViewContainer = RootLayout.FindViewById<RelativeLayout>(Resource.Id.webViewContainer);
-                webViewContainer.AddView(X5WebViewHelper.WebViewAssets[X5WebViewHelper.PageParam[PageId].WebViewKey]);
-            }
+            var webViewContainer = RootLayout.FindViewById<RelativeLayout>(Resource.Id.webViewContainer);
+            X5WebViewHelper.AttachedWebView(WebViewKey, webViewContainer);
         }
 
         public override void OnPause()
         {
             base.OnPause();
-            if (X5WebViewHelper.WebViewAssets.ContainsKey(X5WebViewHelper.PageParam[PageId].WebViewKey))
-            {
-                var webViewContainer = RootLayout.FindViewById<RelativeLayout>(Resource.Id.webViewContainer);
-                webViewContainer.RemoveView(X5WebViewHelper.WebViewAssets[X5WebViewHelper.PageParam[PageId].WebViewKey]);
-            }
+            var webViewContainer = RootLayout.FindViewById<RelativeLayout>(Resource.Id.webViewContainer);
+            X5WebViewHelper.AttachedWebView(WebViewKey, webViewContainer);
         }
 
     }

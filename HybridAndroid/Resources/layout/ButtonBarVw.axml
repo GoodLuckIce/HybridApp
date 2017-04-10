@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center"
-    android:background="@drawable/background_bar"
+    android:background="@color/PageBackground"
     android:gravity="center"
     android:orientation="horizontal">
     <RelativeLayout
@@ -15,7 +15,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:paddingTop="10dp"
-            android:text="首页"
+            android:text="Home"
             android:background="@color/PageBackground"
             android:drawableTop="@drawable/bottom_bar_icon_one_selelctor"
             android:textColor="@drawable/bottom_bar_font_selelctor"
@@ -31,7 +31,7 @@
             android:layout_height="fill_parent"
             android:paddingTop="10dp"
             android:background="@color/PageBackground"
-            android:text="订单"
+            android:text="LCL"
             android:drawableTop="@drawable/bottom_bar_icon_tow_selelctor"
             android:textColor="@drawable/bottom_bar_font_selelctor"
             android:textSize="12sp" />
@@ -48,7 +48,7 @@
             android:paddingTop="10dp"
             android:drawableTop="@drawable/bottom_bar_icon_three_selelctor"
             android:textColor="@drawable/bottom_bar_font_selelctor"
-            android:text="我的"
+            android:text="My"
             android:textSize="12sp" />
     </RelativeLayout>
 <!--<View

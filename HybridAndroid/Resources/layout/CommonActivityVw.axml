@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+        android:id="@+id/x5Activity"
     android:layout_width="fill_parent"
     android:background="@color/PageBackground"
     android:layout_height="fill_parent">
@@ -77,7 +78,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="0dp"
         android:background="@color/PageBackground">
       <RelativeLayout
              android:id="@+id/webViewContainer"

@@ -41,15 +41,15 @@ namespace HybridAndroid.Common
             if (!string.IsNullOrWhiteSpace(pageId)
                 && "undefined" != pageId
                 && X5WebViewHelper.PageActivity.ContainsKey(pageId)
-                && X5WebViewHelper.PageParam.ContainsKey(pageId))
+                && AnalyticAgreement.PageParam.ContainsKey(pageId))
             {
-                X5WebViewHelper.PageParam[pageId].BackParam = param;
+                AnalyticAgreement.PageParam[pageId].BackParam = param;
                 //var router = "{ path: '" + X5WebViewHelper.PageParam[pageId].PageUrl + "', params: { PageId: '" + pageId + "' }}";
 
-                var router = X5WebViewHelper.PageParam[pageId].PageUrl + "/" + pageId + "/^";
-                if (X5WebViewHelper.PageParam[currentPageId].IsRelative)
+                var router = AnalyticAgreement.PageParam[pageId].PageUrl + "/" + pageId + "/^";
+                if (AnalyticAgreement.PageParam[currentPageId].IsRelative)
                 {
-                    ExecuteJavaScript(pageId, $@"window.AppBridge.SetPageId(""{X5WebViewHelper.PageParam[pageId].ParentPageId}"",""{X5WebViewHelper.PageParam[pageId].PageId}"")");
+                    ExecuteJavaScript(pageId, $@"window.AppBridge.SetPageId(""{AnalyticAgreement.PageParam[pageId].ParentPageId}"",""{AnalyticAgreement.PageParam[pageId].PageId}"")");
                     ExecuteJavaScript(pageId, $@"window.AppBridge.Router.push(""{router}"")");
                 }
                 AnalyticAgreement.AgreementProvider.OnResume(pageId, param);
@@ -61,12 +61,12 @@ namespace HybridAndroid.Common
                     foreach (var item in pageIdList)
                     {
                         var pageActivity = X5WebViewHelper.PageActivity;
-                        var pageParam = X5WebViewHelper.PageParam;
+                        var pageParam = AnalyticAgreement.PageParam;
                         var webViewAssets = X5WebViewHelper.WebViewAssets;
                         pageActivity[item].Finish();
                         pageActivity[item] = null;
                         pageActivity.Remove(item);
-                        if (!X5WebViewHelper.PageParam[item].IsRelative)
+                        if (!AnalyticAgreement.PageParam[item].IsRelative)
                         {
                             webViewAssets[pageParam[item].WebViewKey].RemoveAllViews();
                             webViewAssets[pageParam[item].WebViewKey].Destroy();
@@ -80,9 +80,9 @@ namespace HybridAndroid.Common
             }
             else
             {
-                var pa = X5WebViewHelper.PageParam[X5WebViewHelper.PageParam[currentPageId].ParentPageId];
-                X5WebViewHelper.PageParam[pa.PageId].BackParam = param;
-                if (X5WebViewHelper.PageParam[currentPageId].IsRelative)
+                var pa = AnalyticAgreement.PageParam[AnalyticAgreement.PageParam[currentPageId].ParentPageId];
+                AnalyticAgreement.PageParam[pa.PageId].BackParam = param;
+                if (AnalyticAgreement.PageParam[currentPageId].IsRelative)
                 {
                     ExecuteJavaScript(pa.PageId, $@"window.AppBridge.SetPageId(""{pa.ParentPageId}"",""{pa.PageId}"")");
                     ExecuteJavaScript(pa.PageId, $@"window.AppBridge.Router.go(-1)");
@@ -93,13 +93,13 @@ namespace HybridAndroid.Common
                 MainActivity.thisActivity.RunOnUiThread((() =>
                 {
                     var pageActivity = X5WebViewHelper.PageActivity;
-                    var pageParam = X5WebViewHelper.PageParam;
+                    var pageParam = AnalyticAgreement.PageParam;
                     var webViewAssets = X5WebViewHelper.WebViewAssets;
                     pageActivity[currentPageId].Finish();
                     pageActivity[currentPageId] = null;
                     pageActivity.Remove(currentPageId);
 
-                    if (!X5WebViewHelper.PageParam[currentPageId].IsRelative)
+                    if (!AnalyticAgreement.PageParam[currentPageId].IsRelative)
                     {
                         webViewAssets[pageParam[currentPageId].WebViewKey].RemoveAllViews();
                         webViewAssets[pageParam[currentPageId].WebViewKey].Destroy();
@@ -114,7 +114,7 @@ namespace HybridAndroid.Common
 
         List<string> GetParentPageIdList(List<string> pageIdList, string currentPageId, string pageId)
         {
-            var pp = X5WebViewHelper.PageParam[currentPageId];
+            var pp = AnalyticAgreement.PageParam[currentPageId];
             if (X5WebViewHelper.PageActivity.ContainsKey(pp.PageId))
             {
                 pageIdList.Add(pp.PageId);
@@ -150,10 +150,10 @@ namespace HybridAndroid.Common
                 var temp = true;
                 while (temp)
                 {
-                    if (X5WebViewHelper.PageParam[pageId].IsLoadFinished)
+                    if (AnalyticAgreement.PageParam[pageId].IsLoadFinished)
                     {
                         temp = false;
-                        var x5WebView = X5WebViewHelper.WebViewAssets[X5WebViewHelper.PageParam[pageId].WebViewKey];
+                        var x5WebView = X5WebViewHelper.WebViewAssets[AnalyticAgreement.PageParam[pageId].WebViewKey];
                         //js = js.Replace("'", "\\'");
                         //js = $@"executeJs(""{js}"")";
                         js = $"javascript:{js}";
@@ -177,31 +177,41 @@ namespace HybridAndroid.Common
         /// <param name="pageId"></param>
         public void PageFinished(string pageId)
         {
-            if (X5WebViewHelper.PageParam.ContainsKey(pageId))
+            if (AnalyticAgreement.PageParam.ContainsKey(pageId))
             {
                 var model = new
                 {
-                    ParentPageId = X5WebViewHelper.PageParam[pageId].ParentPageId,
-                    PageId = pageId,
-                    UserContext = new
-                    {
-                        UserID = UserContext.UserId,
-                        UserName = UserContext.Username
-                    },
-                    DeviceInfo = new
-                    {
-                        PlatformType = "Android"
-                    }
+                    UserId = UserContext.UserId,
+                    UserName = UserContext.UserName,
+                    Avatar = UserContext.Avatar
                 };
                 var modelJson = JsonConvert.SerializeObject(model).Replace("\"", "\\\"");
-                ExecuteJavaScript(pageId, $@"window.AppBridge.DataInit(""{modelJson}"")");
 
-                OnCreate(X5WebViewHelper.PageParam[pageId].ParentPageId, pageId, X5WebViewHelper.PageParam[pageId].OpenParam);
+                ExecuteJavaScript(pageId, $@"window.AppBridge.SetUserContext(""{modelJson}"")");
+                ExecuteJavaScript(pageId, $@"window.AppBridge.SetPageId(""{AnalyticAgreement.PageParam[pageId].ParentPageId}"",""{pageId}"")");
+
+                OnCreate(AnalyticAgreement.PageParam[pageId].ParentPageId, pageId, AnalyticAgreement.PageParam[pageId].OpenParam);
 
 
-                X5WebViewHelper.PageParam[pageId].IsLoadFinished = true;
+                AnalyticAgreement.PageParam[pageId].IsLoadFinished = true;
 
             }
+        }
+
+        /// <summary>
+        /// SetPageIdÍê³É
+        /// </summary>
+        /// <param name="parentPageId"></param>
+        /// <param name="pageId"></param>
+        public void SetPageIdComplete(string parentPageId, string pageId)
+        {
+            Task.Run(() =>
+            {
+                MainActivity.thisActivity.RunOnUiThread((() =>
+                {
+                    X5WebViewHelper.WebViewAssets[AnalyticAgreement.PageParam[pageId].WebViewKey].Visibility = ViewStates.Visible;
+                }));
+            });
         }
 
         #endregion
@@ -244,6 +254,7 @@ namespace HybridAndroid.Common
         {
             ExecuteJavaScript(pageId, $@"window.AppBridge.OnCreate(""{parentPageId}"",""{pageId}"",""{prarm}"")");
         }
+
 
         #endregion
     }

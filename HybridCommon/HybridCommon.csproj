@@ -110,6 +110,7 @@
     <Compile Include="Context\UserContext.cs" />
     <Compile Include="SqlLite\Model\UserCertificate.cs" />
     <Compile Include="SqlLite\Model\UserConfigure.cs" />
+    <Compile Include="StaticResourceHelper\HtmlFileManage.cs" />
     <Compile Include="Utils\AppLogHelper.cs" />
     <Compile Include="Communication\ChatProvider.cs" />
     <Compile Include="Utils\Cryptography.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="HttpClientHelper\PageParameterModel.cs" />
     <Compile Include="HttpClientHelper\PageResultModel.cs" />
     <Compile Include="HybridCommonMain.cs" />
+    <Compile Include="Utils\MimeHelper.cs" />
     <Compile Include="Utils\ModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlLite\Model\AppLog.cs" />

@@ -13,21 +13,29 @@
 
         public static int NetworkType = 0;
 
-        public static string ServerHost
+        public static string HtmlServerHost
         {
             get
             {
                 if (NetworkType == 0)
                 {
-                    return "http://192.168.2.103";//开发
+                    return "http://47.88.85.72:8056";//开发
                 }
-                else if (NetworkType == 1)
-                {
-                    return "http://192.168.1.175";//测试
-                }
-                return "http://192.168.2.103";//开发
+                return "http://192.168.1.175:802";//开发
             }
         }
-        
+
+        public static string APiServerHost
+        {
+            get
+            {
+                if (NetworkType == 0)
+                {
+                    return "http://192.168.1.175:802";//开发
+                }
+                return "http://192.168.1.175:802";//开发
+            }
+        }
+
     }
 }

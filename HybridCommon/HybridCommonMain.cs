@@ -9,6 +9,7 @@ using HybridCommon.Context;
 using HybridCommon.HttpClientHelper;
 using HybridCommon.SqlLite;
 using HybridCommon.SqlLite.Model;
+using HybridCommon.StaticResourceHelper;
 using HybridCommon.Utils;
 using Plugin.Connectivity;
 using Plugin.DeviceInfo;
@@ -25,12 +26,10 @@ namespace HybridCommon
         /// 初始化
         /// </summary>
         /// <param name="agreement">协议</param>
-        /// <param name="terminalType">终端类型:0=拼箱端</param>
-        public static ResultObj Init(IAgreementProvider agreement, int terminalType)
+        public static ResultObj Init(IAgreementProvider agreement)
         {
             AnalyticAgreement.AgreementProvider = agreement;
-
-            DeviceInfo.TerminalType = terminalType;
+            
             DeviceInfo.IsFirstLoad = true;
             DeviceInfo.RootFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string dataBasePath = Path.Combine(DeviceInfo.RootFolder, Config.DataBaseName);
@@ -40,7 +39,7 @@ namespace HybridCommon
             }
 
             //初始化AppLog
-            //AppLogHelper.Init();
+            AppLogHelper.Init();
 
             if (DeviceInfo.IsFirstLoad)
             {
@@ -51,9 +50,17 @@ namespace HybridCommon
             }
             else
             {
-                //todo:检查用户状态是否正常
+                var db = DbConHelper.NewDbCon();
+                var userCertificate = db.Table<UserCertificate>().FirstOrDefault();
+                if (userCertificate != null)
+                {
+                    UserContext.UserId = userCertificate.UserId;
+                    UserContext.UserName = userCertificate.UserName;
+                }
+
             }
 
+            HtmlFileManage.Init();
 
             //var ss = CrossDeviceInfo.Current.Platform;
             //var sse = CrossConnectivity.Current;
